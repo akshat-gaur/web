@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCquryaYKeYy68RF9-_4B5Ln04S4DVuyqA"></script>
+</head>
+<body>
+    <form method='POST' action="{% url 'sign_up' %}">
+        {% csrf_token %}
+        {{form}}
+    	<button type='submit'> Submit</button>
+
+    </form>
+    <h3>{{msg}}</h3>
+</body>
+<script type="text/javascript">
+  
+      function successCallBack(position){
+        console.log('successCallBack')
+        p=document.getElementById('geolocation')
+        lat=(position.coords.latitude).toString()
+        long=(position.coords.longitude).toString()
+        x=lat+','+long
+        p.value=x
+
+      }
+
+      function errorCallBack(error){
+        console.log(error)
+      }
+
+      navigator.geolocation.getCurrentPosition(successCallBack,errorCallBack,{enableHighAccuracy:true})
+
+                 
+
+    
+</script>
+
+
+
+
+</html>
+
+

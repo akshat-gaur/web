@@ -1,0 +1,688 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+.wrapper{
+	margin: 0 auto;
+	width: 365px;
+
+}
+
+
+
+.container{
+	display: inline-block;
+	background-color: #8fc8d8;
+	border: 2px solid black;
+	padding:40px;
+	margin:0px;
+	width:24%;
+	height:300px
+}
+
+
+
+.list{
+
+	height: 100px;
+    background-color: #e2cab6c2;
+    border: 2px solid black;
+    margin: 30px;
+    padding: 50px 20px 30px 50px;
+    font-size: x-large;
+	
+
+
+}
+
+
+.list_img{
+	height: 50px;
+	width:  50px;
+
+
+}
+
+
+
+.tc{
+	background-color: #d4c3c3;
+	height: 1500px;
+	width: calc(100%-30px);
+	margin-left: 25px;
+	margin-right: 25px;
+	display: grid;
+	grid-template-rows : 420px 420px 420px;
+	grid-template-columns :repeat(4,1fr) ;
+	grid-row-gap: 25px;
+	column-gap:25px;
+}
+
+
+
+.ti{
+	background-color: white;
+	padding:25px 30px 10px 30px;
+	
+
+}
+
+.imgclass{
+	width: 300px;
+	height: 330px;
+	object-fit: cover;
+	
+}
+
+.header{
+	width: 100%;
+	height: 250px;
+	color: white;
+	background-color: black;
+
+
+}
+
+.extra{
+	width: 100%;
+	height: 100px;
+	background-color: yellow;
+
+
+}
+
+header{
+	background-color:black;
+	color:white;
+	width:100%;
+	height: 80px;
+}
+header ul li a{
+	text-decoration:none;
+	color:white;
+	padding:5px 8px;
+}
+
+header li{
+	float:left;
+	list-style:none;
+	margin: 10px 20px;
+}
+
+nav ul{
+	overflow:auto;
+}
+
+nav li input{
+	width:250px;
+	max-width:300px;
+	min-width:100px;
+	padding:3px 2px;
+	margin-left:8px
+}
+nav li  button{
+	margin-left:4px;
+	padding:3px 2px;
+	font-weight:600;
+}
+
+nav li select{
+	padding:3px 2px;
+}
+
+
+.Text{
+	padding: 15px 0px 0px 0px;
+
+}
+
+
+.tt{
+	position: relative;
+	background-color: red;
+	width: 50%;
+	height: 500px;
+	margin: 30px auto;
+}
+
+
+.xer{
+	width: 100%
+	height: 300px;
+	object-fit: cover;
+}
+
+
+.ptc{
+	width: 100%;
+	height:800px;
+	display: grid;
+	grid-template-columns: 600px 600px 1fr;
+	grid-template-rows: 800px 800px;
+	grid-column-gap: 10px;
+	grid-row-gap: 30px;
+
+	background-color:white;
+
+
+}
+
+
+.pti{
+	background-color: white;
+	
+
+}
+
+.pimg{
+	position: relative;
+	width: 550px;
+	height: 700px;
+	border: solid gray 2px;
+	
+}
+
+.rimg{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.name{
+	width: 100%-30px;
+	border: 2px solid gray;
+	padding: 30px;
+	font-family:system-ui;
+	font-size:larger;
+}
+
+#vender{
+	font-family: monospace;
+}
+
+
+.des{
+	padding: 40px 20px;
+	font-family: system-ui;
+
+}
+
+.right-button{
+	position:absolute;
+	top:55%;
+	left:10px;
+	font-size:70px;
+	background-color:rgba(34,54,65,0.2);
+	border-style:none;
+	border-radius:20px;
+	padding:30px;
+}
+
+.left-button{
+	position:absolute;
+	top:55%;
+	font-size:70px;
+	right:970px;
+	padding:30px;
+	background-color:rgba(34,54,65,0.2);
+	border-style:none;
+	border-radius:20px;
+}
+.right-button:hover{
+	color:rgba(34,54,65,0.1);
+	cursor:pointer;
+	
+}
+.left-button:hover{
+	color:rgba(34,54,65,0.1);
+	cursor:pointer;
+	
+}
+
+.box{
+	width: 60%;
+	height:250px;
+	margin:200px auto;
+	border: 2px solid grey;
+	padding:50px;
+	text-align:center;
+	border-radius:6px;
+
+}	
+
+.box h2{
+	font-size:40px;
+	color:green;
+	letter-spacing:2px;
+}
+
+
+.order{
+	width: 80%;
+	height: 40px;
+	border-radius: 20px;
+	margin:20px auto;
+	background-color: rgba(28, 179, 233,0.4); 
+}
+
+.box button{
+	font-size:20px;
+	text-transform:uppercase;
+	font-weight:600;
+	color:rgba(67,9,98,aliceblue);
+}
+
+
+.order:hover{
+	color:white;
+	cursor:pointer;
+}
+
+
+
+
+.flecx{
+	width: 100%;
+	display:flex;
+	flex-direction: horizontal;
+}
+
+.catagories{
+	width: 350px;
+	height:1000px;
+	            
+
+}
+
+.list_container{
+	width: 100%;
+	
+	
+}
+
+.p_list{
+	width: 100%;
+	height: 400px;
+	display: flex;
+	flex-direction:horizontal;
+	background-color: #e6e4e4;
+	border: 2px solid grey;
+
+}
+
+.list_img{
+	width: 300px;
+	height: 350px;
+	margin: 25px;
+	margin-left:40px;
+	object-fit: cover;
+}
+
+
+.Text_box{
+	width: 100%;
+	height: 100%;
+	padding: 30px 20px 0px 0px;
+}
+
+.txt{
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: larger; 
+	cursor: pointer;
+}
+
+
+.c_order{
+	width: 80%;
+	height: 40px;
+	border-radius: 20px;
+	margin:20px auto;
+	background-color: gold; 
+}
+
+.dc{
+	padding: 30px 0px 0px 0px;
+	
+}
+
+
+.departments{
+	margin: 10px;
+	font-family: cursive;
+
+
+}
+
+.departments:hover{
+	cursor: pointer;
+	color:#a6e216;;
+
+}
+
+
+#vender{
+	color: green;
+}
+
+
+#vender:hover{
+	cursor: pointer;
+}
+
+
+
+
+.xtc{
+	background-color: white;
+	height: 1500px;
+	width: calc(100%-30px);
+	margin-left: 25px;
+	margin-right: 25px;
+	display: grid;
+
+	grid-template-columns :repeat(4,1fr) ;
+	
+	column-gap:25px;
+}
+
+
+.xti{
+	background-color: #ddc1e4;
+    height: 420px;
+    margin-top: 25px;
+	padding:25px 30px 10px 30px;
+	display: flex;	
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+.xvimgclass{
+	width: 300px;
+	height: 330px;
+	object-fit: cover;
+
+}
+
+
+
+
+.xtxt{
+	font-family:cursive;
+	font-size: small; 
+}
+
+
+.mbox{
+	width: 60%;
+	height:400px;
+	margin:200px auto;
+	padding:50px;
+	text-align:center;
+	border-radius:6px;
+	background-color: #efe4ef;
+	float: left;
+
+}
+
+
+.star{
+	font-size: 3rem;
+	color: #ff9800;
+	background-color: unset;
+	border: none;
+}
+
+
+
+.comment_box{
+	width: 100%;
+	height: 250px;
+	margin-top: 15px;
+	border: 2px solid grey;
+	font-size: 1.2rem;
+
+}
+
+.p_button{
+	width: 90px;
+	height: 50px;
+	border-radius: 30px;
+	margin-top: 30px;
+	background-color: gold;
+}
+
+
+.heading{
+	width: 100%                    
+	height:400px;
+	font-size: 4rem;
+	color:#505550;
+
+}
+
+.dep{
+	width: 100%;
+	height: 80px;
+
+
+}
+
+.type_header{
+	width: 100%;
+	height: 200px;                                    
+	font-size: 4rem; 
+
+}
+
+#reviews{
+	width: 100px;
+	height: 50px;
+	font-size:1.5rem;
+	border-radius:15px;
+	
+
+}                           
+
+#reviews:hover{
+	color:green;
+}
+
+
+.s_star{
+	font-size: 1.5rem;
+	color: #ff9800;
+	background-color: unset;
+	border: none;
+}
+
+
+.teext{
+	margin-top: 20px
+
+}
+
+.time{
+	color:grey;
+	margin-bottom: 10px;
+}
+
+
+.list_c{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-direction: horizontal;
+	border-bottom:1px solid grey;
+	padding-top: 20px;
+	
+}
+
+
+.o_list{
+	width: 250px;
+	height: 250px;
+	margin: 25px;
+	margin-left: 40px;
+	object-fit: cover;
+	border: 1px solid grey;
+	
+
+}
+
+
+.bh_heading{
+	width: 100%;
+	height: 50px;
+	border-bottom:1px solid grey;
+	padding-top: 10px;
+}
+
+.cancel_button{
+	position: relative;
+	float: right;
+	width: 200px;
+	height: 40px;
+	font-size:1rem;
+	margin-top: 300px;
+	margin-right: 40px;
+	background-color: #ff9800;
+	border-radius: 20px;
+	cursor: pointer;
+
+
+}
+
+.txt:Hover{
+	color:grey;
+
+}
+
+body{
+    padding: 0%;
+    margin: 0%;
+    font-family:  Courier;
+    background: white;
+    height: 100vh;
+    
+    
+}
+.center{
+position:absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 400px;
+background: white;
+border-radius: 10px;
+border: 1px solid skyblue;
+}
+.center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+
+}
+.center form{
+   padding: 0 40px;
+   box-sizing: border-box;
+}
+
+form .text_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px  0;
+
+}
+.pass a{
+    text-decoration: none;
+}
+
+.text_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.text_field label{
+    position:absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.6s;
+}
+
+.text_field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0%;
+    width: 0;
+    height: 2px;
+    background: #2691d9;
+    transition: .6s;
+}
+
+.text_field input:focus~label,
+.text_field input:valid~label{
+    top: -5px;
+    color: #2691d9;
+}
+.text_field input:focus~span::before,
+.text_field input:valid~span::before{
+    width: 100%;
+}
+
+.pass{
+    margin: -5px 0 20px 5px;
+    color: #a6a6a6;
+    cursor: pointer;
+}
+.pass:hover{
+    text-decoration: underline;
+}
+
+input[type="submit"]{
+    width: 100%;
+    height:50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+}
+
+.sign_up{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #666666;
+
+}
+
+.sign_up a{
+    color:#2691d9;
+    text-decoration: none;
+
+}
+.sign_up a:hover{
+    text-decoration: underline;
+}
+

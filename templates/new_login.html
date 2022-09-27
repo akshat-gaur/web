@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="center">
+        <h1>login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="text_field"> <input type="text"  required name="username" spellcheck="false">
+                <span></span>
+                <label>username</label>
+            </div>
+            <div   class="text_field"> <input type="password" required name="password">
+                <span></span>
+                <label >password</label>
+            </div>
+            <div  class="pass">
+                <a href="http://127.0.0.1:8000/vender_login" >Become a vender</a>
+            </div>
+            <input  type="submit" value="login">
+            <div class="sign_up" id="sign_up">
+                Not a member? <a href="#">sign up</a>
+            </div>
+        </form>
+    </div>
+     <h2> {{res}}</h2>>
+</body>
+<script type="text/javascript">
+  var h=document.getElementById("sign_up")
+  h.addEventListener('click',()=> {
+  var url_string=`http://127.0.0.1:8000/sign_up`
+  window.location.href=url_string
+
+  })
+
+
+
+
+</script>
+</html>

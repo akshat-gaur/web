@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCquryaYKeYy68RF9-_4B5Ln04S4DVuyqA"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+  <div class="xtc">
+    
+
+    
+  </div>
+
+
+  <script type="text/javascript">
+    
+    var post_button=document.getElementById("p_button")
+      post_button.addEventListener('click',()=> {
+      if (on_post_button===0) {
+
+
+                                                                             
+      on_post_button=1
+      var c=document.getElementById('comment_field')
+      c1=c.value
+      const p_data={comment:c1,product_id:p_id,purpose:'post_reveiw',rating:current_stars}
+      c.value=''
+      header= {
+      "Content-Type": "application/json",          
+      'X-CSRFToken': csrftoken
+      }
+      const options={method:"POST",body:JSON.stringify(p_data),headers:header}
+ 
+      url=`http://127.0.0.1:8000/reveiw_api`       
+      fetch(url,options).then((response)=>{ 
+      return response.text()   
+      }).then((y_data)=>{
+        result=JSON.parse(y_data)                
+        if (result.status===200) {
+          obj={auther:result.auther,Text:p_data.comment,date_time:result.date_time}
+          show_comments(obj)
+
+        }
+
+
+      })
+
+
+
+      
+    }
+
+})
+
+
+
+
+  </script>
+
+</body>

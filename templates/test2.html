@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCquryaYKeYy68RF9-_4B5Ln04S4DVuyqA"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <header>
+   <nav>
+     <ul>
+       <li><h1>Online Shopping</h1></li>
+       <li><a href="#">Deliver to:</a></li>
+      <li> <div>
+         <input type="text" name="thing" placeholder="search your needs..."><button>Search</button>
+       </div>
+     </li>
+     <li>
+       <div>
+
+         <select>
+           <option selected disabled value="">Account & Lists</option>
+           <option value="account"><a href="http://127.0.0.1:8000/current_orders">Orders</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Recommendations">Recommendations</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></option>
+           <option value="account"><a href="#">Sign Out</a></option>
+         </select>
+       </div>
+     </li>
+     </ul>
+   </nav>
+ </header>
+ <header>
+   <nav>
+     <ul>
+       <li><a href="http://127.0.0.1:8000/order_history">Orders</a></li>
+       <li><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></li>
+       <li><a href="http://127.0.0.1:8000/vender_login">Sell</a></li>
+       <li><a href="http://127.0.0.1:8000/cart">Cart</a></li>
+
+
+     </ul>
+   </nav>            
+ </header>
+
+ <div class="type_header">
+   <h2>{{c.name}}</h2>
+ </div>
+ <hr>
+ <div class="flecx"> 
+<div class="catagories" id="cat">
+  <div class="dc"> 
+  {%for i in d_array%}
+  <div class="dep">                      
+  <h3 class="departments" id="{{i.id}}">{{i.name}}</h3>
+  </div>
+  <hr>
+  {%endfor %}
+</div>
+</div>
+  <div class="list_container">
+    {%for i in data%}
+    <div class="p_list" id="{{i.id}}">
+      <img src="{{i.p_img.url}}" class="list_img">
+      <div class="Text_box">
+        <h3 class="txt">{{i.name}}</h3>
+        <br>
+        <h3>price: {{i.price}}</h3>
+      </div>
+     </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(()=>{
+    $(".p_list").click(function(){
+      var pos = $(this).attr("id");
+      console.log('pos',pos)
+      var url_string=`http://127.0.0.1:8000/products?products_id=${pos}`
+      window.location.href=url_string
+      });
+
+  })
+
+  $(document).ready(()=>{
+    $(".departments").click(function(){
+      var pos = $(this).attr("id");
+      pos=pos.replace('d','')
+      pos=parseInt(pos)
+      console.log(pos)
+      var url_string=`http://127.0.0.1:8000/product_list?products_id=${pos}`
+      window.location.href=url_string
+      });
+
+  })
+
+
+  
+  
+</script>

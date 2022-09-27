@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<body>
+
+	<header>
+   <nav>
+     <ul>
+       <li><h1>Online Shopping</h1></li>
+       <li><a href="#">Deliver to:</a></li>
+      <li> <div>
+         <input type="text" name="thing" placeholder="search your needs..."><button>Search</button>
+       </div>
+     </li>
+     <li>
+       <div>
+
+         <select>
+           <option selected disabled value="">Account & Lists</option>
+           <option value="account"><a href="http://127.0.0.1:8000/current_orders">Orders</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Recommendations">Recommendations</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></option>
+           <option value="account"><a href="#">Sign Out</a></option>
+         </select>
+       </div>
+     </li>
+     </ul>
+   </nav>
+ </header>
+ <header>
+   <nav>
+     <ul>
+       <li><a href="http://127.0.0.1:8000/order_history">Orders</a></li>
+       <li><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></li>
+       <li><a href="http://127.0.0.1:8000/cart">Carts</a></li>
+       <li><a href="http://127.0.0.1:8000/vender_login">Sell</a></li>
+
+     </ul>
+   </nav>            
+ </header>
+ 	<h2 class="bh_heading"> {{main_heading}}</h2>
+	{%for i in data%}
+    <div class="list_c">
+        <img  class="o_list" src="{{i.p_img.url}}"> 
+       <h3 class="txt" id={{i.id}}>{{i.name}}</h3>
+       <button class="cancel_button" id="d{{i.id}}">{{button_heading}}</button>
+    </div>
+    {%endfor%}
+
+</body>
+<script type="text/javascript">
+  m="{{main_heading}}"
+  if (m=="Your Orders") {
+    c='o'
+  }
+
+  else{
+    c='c'
+  }
+
+  order_button_timeout=0
+	 $(document).ready(()=>{
+    $(".txt").click(function(){
+      var pos = $(this).attr("id");
+      console.log('pos',pos)
+      var url_string=`http://127.0.0.1:8000/products?products_id=${pos}`
+      window.location.href=url_string
+      });
+
+  })
+                                                        
+   $(document).ready(()=>{
+    $(".cancel_button").click(function(){
+      var pos = $(this).attr("id");
+      console.log('pos',pos)
+      if (c=='o') {
+      url=`http://127.0.0.1:8000/order?product_id=${pos}&purpose=cancel_order`
+    }
+
+    else{
+      url=`http://127.0.0.1:8000/order?product_id=${pos}&purpose=remove_cart`
+
+
+    }
+      if (order_button_timeout===0) {
+        fetch(url).then((response)=>{
+          return response.text()
+        }).then((b_data)=>{
+          y_data=JSON.parse(b_data)
+          console.log(y_data.mes)
+          ob=document.getElementById(pos)
+          if (c=='o') {
+          ob.innerHTML='order canceled'
+        }
+        else{
+          ob.innerHTML='Removed'
+
+        }
+
+          return 0
+        })
+
+        }
+  
+      });
+
+  })
+
+
+
+
+
+</script>
+
+</html>

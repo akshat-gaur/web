@@ -1,0 +1,52 @@
+{% if msg is not None %}
+    <div class="alert alert-success">
+  <strong>Success!</strong> {{ msg }}.
+</div>
+    {% endif %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+          
+          <form action="{% url 'insert' %}" class="login-form" method="post">
+             {% csrf_token %}
+            <input type="text" placeholder="username" name="username"/>
+            <br>
+            <br>
+            <br>
+
+            <input type="password" placeholder="password" name="password"/>
+            <br>
+            <br>
+            <button>login</button>
+            <p class="message"><a href="#"></a></p>
+          </form>
+        </div>
+      </div>
+    <button id="sign_up"> SIGN UP</button>
+  <h2> {{res}}</h2>>
+</body>
+<script type="text/javascript">
+  var h=document.getElementById("sign_up")
+  h.addEventListener('click',()=> {
+  var url_string=`http://127.0.0.1:8000/sign_up`
+  window.location.href=url_string
+
+  })
+
+
+
+
+</script>
+
+
+</html>

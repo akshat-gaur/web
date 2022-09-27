@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCquryaYKeYy68RF9-_4B5Ln04S4DVuyqA"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+   <nav>
+     <ul>
+       <li><h1>Online Shopping</h1></li>
+       <li><a href="#">Deliver to:</a></li>
+      <li> <div>
+         <input type="text" name="thing" placeholder="search your needs..."><button>Search</button>
+       </div>
+     </li>
+     <li>
+       <div>
+
+         <select>
+           <option selected disabled value="">Account & Lists</option>
+           <option value="account"><a href="http://127.0.0.1:8000/current_orders">Orders</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Recommendations">Recommendations</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></option>
+           <option value="account"><a href="#">Sign Out</a></option>
+         </select>
+       </div>
+     </li>
+     </ul>
+   </nav>
+ </header>
+ <header>
+   <nav>
+     <ul>
+       <li><a href="http://127.0.0.1:8000/order_history">Orders</a></li>
+       <li><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></li>
+       <li><a href="http://127.0.0.1:8000/vender_login">Sell</a></li>
+       <li><a href="http://127.0.0.1:8000/cart">Cart</a></li>
+
+
+     </ul>
+   </nav>            
+ </header>
+
+ <div class="ptc">
+  <div class="pti"> 
+    <div>   
+    <img class="pimg" src="" id="carosoul_img">
+    </div>
+    
+    <button class="left-button" id="left_b">&#8658;</button>
+    <button class="right-button" id="right_b">&#8656;</button>
+    
+    
+  </div>
+  <div class="pti">
+    <div class="name">
+      <h2> {{name}}</h2>
+      <h2>{{price}}</h2>
+      <div id="ratings"></div>
+      <h2 id='vender'>{{vender}}</h2>
+    </div>
+   <div class="des">
+    <h3 id="description"></h3>
+
+     
+   </div>
+  </div>
+
+
+  <div class="pti">
+    <div class="box">
+      <h2 class="status"> In stocks</h2>
+      <button class="order" id="order_button"> order</button>
+      <button class="order" id="cart_button"> add to cart</button>
+     </div>
+   </div>
+
+   
+
+   <div class="pti"> 
+    <div class="mbox">
+    <h3> Add your reviews</h3>
+
+      <button class="star">&#9733</button>
+      <button class="star">&#9733</button>
+      <button class="star">&#9733</button>
+      <button class="star">&#9733</button>
+      <button class="star">&#9733</button>
+
+      <textarea class="comment_box" spellcheck="false" id="comment_field" placeholder="Add your reviews"> </textarea>
+      <button class="p_button" id="post_button">POST</button>
+
+  </div>    
+  </div>
+
+  <div class="pti" id="reviews_container">
+    <button id="reviews"> reviews</button>
+
+
+   </div>
+  
+
+ 
+ </div>
+
+</body>
+
+<script type="text/javascript">
+  a=`{{d}}`
+  on_load_button=0
+  on_post_button=0
+  array=a.split('\n')
+
+
+  function join(array){
+    i=0
+    s=''
+    while(i<array.length){
+      if (array[i]==='') {
+        add='<br>'
+      }
+      else{
+        add=array[i]
+      }
+      s=s+add
+      i=i+1
+    }
+    return s
+  }
+
+  s=join(array)
+  e=document.getElementById("description")
+  e.innerHTML=s
+
+  imges=`{{img}}`
+  p_id="{{id}}"
+  urls_array=imges.split(',')
+  a=(urls_array.pop())
+  console.log(urls_array)
+
+  
+ carosoul=document.getElementById("carosoul_img")
+ carosoul.src=urls_array[0]
+ current_img_no=0
+ no_of_img=urls_array.length-1
+
+ left_button=document.getElementById("left_b")
+
+ left_button.addEventListener('click',()=>{
+  console.log('safADF')
+  if (current_img_no===no_of_img) {
+    current_img_no=0
+  }
+  else{
+    current_img_no=current_img_no+1
+  }
+  carosoul.src=urls_array[current_img_no]
+
+ })
+
+ right_button=document.getElementById("right_b")
+
+ right_button.addEventListener('click',()=>{
+  if (current_img_no===0) {
+    current_img_no=no_of_img
+  }
+  else{
+    current_img_no=current_img_no-1
+  }
+  carosoul.src=urls_array[current_img_no]
+
+ })
+
+ function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
+
+
+
+function create_template (n){
+        t1=`<button class="s_star">&#9734</button> \n`
+        t2=`<button class="s_star">&#9733</button> \n`
+        d1=`<div>`
+        d2=`</div>`
+
+        i=0
+        template=d1
+        while (i<5){
+            if(i<n){
+                template=template+t2
+            }
+            else{
+                template=template+t1
+
+            }
+            i=i+1
+        }
+        template=template+d2
+        return template
+    }
+
+
+function show_rating() {
+  var rating="{{rating}}"
+  rating=parseFloat(rating)  
+  rating=Math.round(rating)
+  var t=create_template(rating)
+  er=document.getElementById("ratings")
+  new_form=t
+  var form_data=document.createElement("template")
+  form_data.innerHTML=new_form.trim()
+  x=form_data.content.firstElementChild
+  var e=document.getElementById("ratings")
+  e.appendChild(x)
+  console.log('tony')
+  return 0
+}
+
+
+show_rating()
+
+
+function show_time(d1){
+    date_array=d1.split('-')
+    day=parseInt(date_array[0])          
+    month=parseInt(date_array[1])-1
+    year=parseInt(date_array[2])
+    let d=new Date();
+    y1=d.getFullYear()-2000
+    if ((y1-year)!==0) {
+      a=y1-year
+      return `${a} years ago`
+    }
+    m1=d.getMonth();
+    if ((m1-month!==0)) {
+      a=m1-month
+      return `${a} months ago`
+    }
+    d1=d.getDate();
+    if (d1!==day) {
+      a=d1-day
+      return `${a} days ago`
+    }
+    else{
+      return `today`
+    }
+
+
+  }
+
+
+function show_comments(obj){
+        console.log('root')
+        auther=obj.auther
+        comment=obj.Text
+        time=obj.date_time
+        rating=obj.rating
+        tx=show_time(time)
+        s1= `<div class="teext"> \n`
+        s2= `<h3> ${auther} </h3> \n`
+        s3=create_template(rating)
+        s4= `<h3 class="time">${tx}</h3> \n`
+        s5=`<p>${comment}</p> \n`
+        s6=`</div>`
+        template=s1+s2+s3+s4+s5+s6
+        new_form=template
+        var form_data=document.createElement("template")
+      
+        form_data.innerHTML=new_form.trim()
+        x=form_data.content.firstElementChild
+        var e=document.getElementById("reviews_container")
+        e.appendChild(x)
+        console.log('preoot')
+        return 0
+    }
+
+
+
+
+
+function REPLACE(array){
+     i=0
+     b_data=array
+    while (i<b_data.length){
+      t=b_data[i].Text
+      console.log(t)
+      j=t.indexOf('$%*')
+      while (j!==-1){                      
+      j=t.indexOf('$%*')                           
+      t=t.replace('$%*','"')
+      }
+      b_data[i].Text=t
+      i=i+1
+  }
+
+
+  i=0
+  while (i<b_data.length){
+    t=b_data[i].Text
+    j=t.indexOf('q@#r$')
+    while (j!==-1){                      
+    j=t.indexOf('q@#r$')
+    t=t.replace('q@#r$','<br>')
+    }
+    b_data[i].Text=t
+    i=i+1
+  }
+
+  return b_data 
+
+
+  }
+
+
+
+
+var order_button_timeout=0
+
+var ob=document.getElementById('order_button')
+ob.addEventListener('click',()=>{
+  url=`http://127.0.0.1:8000/order?product_id=${p_id}&purpose=order`
+  
+  if (order_button_timeout===0) {
+  fetch(url).then((response)=>{
+    return response.text()
+  }).then((b_data)=>{
+    y_data=JSON.parse(b_data)
+    console.log(y_data.mes)
+    order_button_timeout=1
+    ob.innerHTML='ordered'
+    ob.setAttribute('class','c_order')
+    return 0
+  })
+
+  }
+
+
+
+})
+
+const allstars=document.querySelectorAll(".star");
+    current_stars=4
+    function color_star(i){
+        j=0
+        while (j<=i){                                           
+            allstars[j].innerHTML="&#9733"
+            j=j+1
+        }
+    }
+
+
+
+    allstars.forEach((star,i)=>{
+        star.onclick=function(){
+            allstars.forEach((star,i)=>{
+                star.innerHTML="&#9734"
+            })
+            current_stars=i
+            color_star(current_stars)
+            return 0
+        }
+
+
+    })
+
+
+var cart_button_timeout=0
+var oc=document.getElementById('cart_button')
+oc.addEventListener('click',()=>{
+  url=`http://127.0.0.1:8000/order?product_id=${p_id}&purpose=cart`
+  console.log('rpop',cart_button_timeout)
+  if (cart_button_timeout===0) {
+  fetch(url).then((response)=>{
+    return response.text()
+  }).then((b_data)=>{
+    y_data=JSON.parse(b_data)
+    console.log(y_data.mes)
+    cart_button_timeout=1
+    oc.innerHTML='added'
+    oc.setAttribute('class','c_order')
+    return 0
+  })
+
+  }
+  
+
+})
+
+
+
+var r_button=document.getElementById("reviews")
+r_button.addEventListener('click',()=> {
+  if (on_load_button===0) {
+    on_load_button=1
+    url=`http://127.0.0.1:8000/reveiw_api?products_id=${p_id}&purpose=get_review`
+
+    fetch(url).then((response)=>{
+      return response.text()
+    }).then((xdata)=>{
+      b_data=JSON.parse(xdata)
+      b_data=JSON.parse(b_data) 
+      b_data=REPLACE(b_data)
+      console.log('b_data',b_data.length)
+
+      var i=0
+      while (i<b_data.length){
+        x_obj=b_data[i]
+        console.log(x_obj)
+        show_comments(x_obj)
+        console.log('loot',i)
+        i=i+1
+      }
+
+      
+
+
+
+  })
+
+}
+
+  })
+
+
+vender_button=document.getElementById('vender')
+vender_button.addEventListener('click', ()=>{
+  v_id="{{vender_id}}"
+  url_link=`http://127.0.0.1:8000/vender?vender_id=${v_id}`
+  window.location.href=url_link
+
+})
+
+
+var post_button=document.getElementById("post_button")
+      post_button.addEventListener('click',()=> {
+      if (on_post_button===0) {
+
+
+                                                                             
+      on_post_button=1
+      var c=document.getElementById('comment_field')
+      c1=c.value
+      cs=current_stars+1
+      const p_data={comment:c1,product_id:p_id,purpose:'post_reveiw',rating:cs}
+      c.value=''
+      header= {
+      "Content-Type": "application/json",          
+      'X-CSRFToken': csrftoken
+      }
+      const options={method:"POST",body:JSON.stringify(p_data),headers:header}
+ 
+      url=`http://127.0.0.1:8000/reveiw_api`       
+      fetch(url,options).then((response)=>{ 
+      return response.text()   
+      }).then((y_data)=>{
+        result=JSON.parse(y_data)                
+        if (result.status===200) {
+          obj={auther:result.auther,Text:p_data.comment,date_time:result.date_time,rating:p_data.rating}
+          console.log("eo bid do")
+          if (p_data.comment.replace(/\s/g,'').length!==0) {
+            console.log('hier')
+            
+          show_comments(obj)
+        }
+
+        }
+
+
+      })
+
+    
+
+      
+    }
+
+})
+
+
+
+    
+
+</script>
+
+
+</html>
+
+

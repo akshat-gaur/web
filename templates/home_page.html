@@ -1,0 +1,87 @@
+{% if msg is not None %}
+    <div class="alert alert-success">
+  <strong>Success!</strong> {{ msg }}.
+</div>
+    {% endif %}
+<!DOCTYPE html>
+ {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <h2 id='heading'> </h2>
+    <div class='wrapper'>
+      <img src="https://imgs.search.brave.com/qmzg3ARPmcf1H5_1uBCofysYDav6ANmqg-QTppjWwUo/rs:fit:759:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5a/M2lGNjZRcFFWSGU4/SGtMUGotUmdnSGFF/byZwaWQ9QXBp" alt="erroor">
+      
+
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    console.log('jnasbjasfllnasfbjlasfl')
+  token="{{token}}";
+  console.log('token',token)
+  function create_form(i,image_url,product_url,product_name){
+    var new_form=(`  <div class='wrapper'>
+      <img src="${image_url}" alt="erroor">
+      <a href="${product_url}" target="_blank">${product_name}</a>
+      
+
+
+    </div>
+
+    `)
+    var form_data=document.createElement("template")
+    form_data.innerHTML=new_form.trim()
+    x=form_data.content.firstElementChild
+    return x
+  
+
+
+  }
+
+
+  var x=document.getElementById('heading')
+  x.innerHTML='this is first <br> now'
+  
+  data="{{data}}"
+  i=0
+  while (i!==-1){
+    i=data.indexOf('&quot;')
+    data=data.replace('&quot;','"')
+  }
+
+  console.log(data)
+  data=JSON.parse(data)
+  console.log(2)
+ 
+
+  var i=data.length-1
+  while (i>=0){
+    element_id=data[i].id
+    image_url=data[i].image_url1
+    product_name=data[i].name
+    console.log(element_id)
+    var url_token=encodeURIComponent(token)
+    var product_url= `http://127.0.0.1:8000/products?products_id=${element_id}&token=${url_token}`
+    new_element=create_form(element_id,image_url,product_url,product_name)
+    document.body.appendChild(new_element)
+    i=i-1   
+  }
+
+
+
+
+
+</script>
+
+
+
+</html>

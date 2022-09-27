@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCquryaYKeYy68RF9-_4B5Ln04S4DVuyqA"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<header>
+   <nav>
+     <ul>
+       <li><h1>Online Shopping</h1></li>
+       <li><a href="#">Deliver to:</a></li>
+      <li> <div>
+         <input type="text" name="thing" placeholder="search your needs..."><button>Search</button>
+       </div>
+     </li>
+     <li>
+       <div>
+
+         <select>
+           <option selected disabled value="">Account & Lists</option>
+           <option value="account"><a href="http://127.0.0.1:8000/current_orders">Orders</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Recommendations">Recommendations</a></option>
+           <option value="account"><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></option>
+           <option value="account"><a href="#">Sign Out</a></option>
+         </select>
+       </div>
+     </li>
+     </ul>
+   </nav>
+ </header>
+ <header>
+   <nav>
+     <ul>
+       <li><a href="http://127.0.0.1:8000/order_history">Orders</a></li>
+       <li><a href="http://127.0.0.1:8000/Browising_history">Browising History</a></li>
+       <li><a href="http://127.0.0.1:8000/vender_login">Sell</a></li>
+       <li><a href="http://127.0.0.1:8000/cart">Cart</a></li>
+
+
+     </ul>
+   </nav>            
+ </header>
+
+ <div class="heading">
+   <h2>{{vender.name}}</h2>
+   
+ </div>
+ <div class="xtc">
+
+{%for i in data%}
+
+  <div class="xti" id={{i.id}}>
+    <img class="xvimgclass" src="{{i.p_img.url}}">
+    <div class="xtxt">
+      <h3>{{i.name}}</h3>
+      
+    </div>
+
+  </div>
+  
+
+{% endfor %}
+
+</div>
+
+
+</body>
+
+<script type="text/javascript">
+  
+   $(document).ready(()=>{
+    $(".xti").click(function(){
+      var pos = $(this).attr("id");
+      var url_string=`http://127.0.0.1:8000/products?products_id=${pos}`
+      window.location.href=url_string
+      });
+
+  })
+
+
+
+</script>
